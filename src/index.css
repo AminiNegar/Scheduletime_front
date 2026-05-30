@@ -53,3 +53,24 @@ body {
 .custom-responsive-picker button:focus-visible {
   outline: none !important;
 }
+
+/* محدود کردن سایز تقویم و زیباتر کردن آن */
+.rmdp-container {
+  width: 100% !important;
+}
+
+.rmdp-calendar {
+  width: 250px !important; /* کوچک و جمع‌وجور */
+  font-size: 12px !important;
+  padding: 10px !important;
+}
+
+.rmdp-day {
+  width: 30px !important;
+  height: 30px !important;
+}
+
+.rmdp-selected {
+  background-color: #4f46e5 !important; /* رنگ بنفش فرم شما */
+  box-shadow: 0 0 5px #4f46e5 !important;
+}

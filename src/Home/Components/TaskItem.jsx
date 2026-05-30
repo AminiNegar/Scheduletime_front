@@ -1,35 +1,38 @@
-import React from 'react';
+import React from "react";
 
-// ۱. کامپوننت سطر کارها (TaskItem) کاملاً هماهنگ با تصویر شما
-const TaskItem = ({ title, description, date, status }) => {
-  // تابع تعیین رنگ دایره وضعیت
-  const getStatusColor = (status) => {
-    switch (status) {
-      case 'do': return 'bg-emerald-500'; 
-      case 'doing': return 'bg-amber-500';   
-      case 'done': return 'bg-rose-500';    
-      default: return 'bg-slate-300';
-    }
+const TaskItem = ({ task, onEdit }) => {
+  const getStatusColor = (s) => {
+    if (s === "انجام شده") return "bg-emerald-100 text-emerald-700";
+    if (s === "در حال انجام") return "bg-amber-100 text-amber-700";
+    return "bg-rose-100 text-rose-700";
+  };
+
+  const getPriorityColor = (p) => {
+    if (p === "زیاد") return "bg-red-100 text-red-700";
+    if (p === "کم") return "bg-blue-100 text-blue-700";
+    return "bg-yellow-100 text-yellow-700";
   };
 
   return (
-    <div className="py-4 border-b border-gray-100 last:border-0 flex items-center justify-between text-xs text-slate-600 gap-4" dir="rtl">
-      
-      <div className="flex items-center gap-2 min-w-[120px]">
-        <span className={`w-3.5 h-3.5 rounded-full flex-shrink-0 ${getStatusColor(status)}`}></span>
-        <span className="font-bold text-slate-800 text-sm whitespace-nowrap">{title}</span>
+    <div 
+      onClick={() => onEdit && onEdit(task)}
+      className="flex items-center justify-between p-4 border-b border-slate-100 hover:bg-slate-50 transition-colors cursor-pointer"
+    >
+      <div className="flex-1 min-w-0">
+        <span className="text-sm font-bold text-slate-700 block truncate">{task.title}</span>
       </div>
-
-      <div className="flex-1 text-center text-slate-400 truncate px-4">
-        <span>توضیحات: </span>
-        <span>{description}</span>
+      <div className="flex items-center gap-2 flex-shrink-0 ml-3">
+        {task.priority && (
+          <span className={`px-2.5 py-1 rounded-full text-[10px] font-bold ${getPriorityColor(task.priority)}`}>
+            {task.priority}
+          </span>
+        )}
+        <span className={`px-3 py-1 rounded-full text-[10px] font-bold whitespace-nowrap ${getStatusColor(task.status)}`}>
+          {task.status}
+        </span>
       </div>
-
-      <div className="text-left font-mono text-slate-500 min-w-[80px] flex-shrink-0">
-        {date}
-      </div>
-
     </div>
   );
 };
-export default TaskItem
+
+export default TaskItem;
