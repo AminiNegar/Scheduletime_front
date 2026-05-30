@@ -5,7 +5,6 @@ const ProfileModal = ({ user, isOpen, onClose, onSave, canEdit = false }) => {
   const [formData, setFormData] = useState(user);
   const fileInputRef = useRef(null);
 
-  // سینک کردن دیتا در صورت تغییر کاربر یا باز و بسته شدن مودال
   useEffect(() => {
     setFormData(user);
     setIsEditing(false);
@@ -15,7 +14,6 @@ const ProfileModal = ({ user, isOpen, onClose, onSave, canEdit = false }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // مدیریت تغییر عکس پروفایل
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -33,10 +31,8 @@ const ProfileModal = ({ user, isOpen, onClose, onSave, canEdit = false }) => {
     <div className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[9999] flex items-center justify-center p-4" dir="rtl">
       <div className="bg-white w-full max-w-[420px] rounded-[24px] p-8 shadow-2xl relative animate-in zoom-in-95 duration-200">
         
-        {/* بخش پروفایل */}
         <div className="flex flex-col items-center text-center">
           
-          {/* عکس پروفایل با افکت تغییر عکس */}
           <div 
             className="relative w-28 h-28 rounded-full overflow-hidden mb-4 border-4 border-slate-50 shadow-md group cursor-pointer"
             onClick={() => isEditing && fileInputRef.current.click()}
@@ -47,7 +43,6 @@ const ProfileModal = ({ user, isOpen, onClose, onSave, canEdit = false }) => {
               className="w-full h-full object-cover" 
             />
             
-            {/* لایه "تغییر عکس" که روی تصویر ظاهر می‌شود */}
             {isEditing && (
               <div className="absolute inset-0 bg-black/50 flex items-center justify-center text-white text-[10px] font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 تغییر عکس
@@ -55,14 +50,12 @@ const ProfileModal = ({ user, isOpen, onClose, onSave, canEdit = false }) => {
             )}
           </div>
           
-          {/* ورودی مخفی فایل */}
           <input type="file" ref={fileInputRef} onChange={handleFileChange} accept="image/*" className="hidden" />
 
           <h2 className="text-xl font-bold text-slate-900">{formData.name}</h2>
           <p className="text-indigo-600 text-sm font-medium">{formData.academicTitle}</p>
         </div>
 
-        {/* بخش ویرایش هوشمند فیلدها */}
         <div className="mt-8 space-y-4 text-sm">
           <Field label="دانشگاه" name="university" value={formData.university} isEditing={isEditing} onChange={handleChange} />
           <Field label="دانشکده" name="faculty" value={formData.faculty} isEditing={isEditing} onChange={handleChange} />
@@ -83,7 +76,6 @@ const ProfileModal = ({ user, isOpen, onClose, onSave, canEdit = false }) => {
           </div>
         </div>
 
-        {/* دکمه‌ها */}
         <div className="flex gap-3 mt-8">
           {isEditing ? (
             <>
@@ -104,8 +96,7 @@ const ProfileModal = ({ user, isOpen, onClose, onSave, canEdit = false }) => {
   );
 };
 
-// کامپوننت کمکی برای نمایش فیلدها
-const Field = ({ label, name, value, isEditing, onChange }) => (
+=const Field = ({ label, name, value, isEditing, onChange }) => (
   <div className="flex justify-between items-center">
     <span className="text-slate-400">{label}:</span>
     {isEditing ? (

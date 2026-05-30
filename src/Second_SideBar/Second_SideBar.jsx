@@ -15,13 +15,11 @@ const Second_SideBar = () => {
   const monthEnd = endOfMonth(currentMonth);
   const days = eachDayOfInterval({ start: monthStart, end: monthEnd });
 
-  // اضافه کردن وضعیت برای انتخاب تکی فیلترها
   const [selectedFilter, setSelectedFilter] = useState('جلسات');
 
   return (
     <div className="flex h-full bg-white border-l border-gray-100 shadow-xl" style={{ width: '256px' }}>
       
-      {/* ۱. ستونِ باریکِ آیکون‌ها (سمت راست) */}
       <div className="w-16 bg-gray-50 flex flex-col items-center py-6 justify-between border-l border-gray-100">
         <div className="flex flex-col items-center gap-6">
           <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-white shadow-sm">
@@ -29,7 +27,6 @@ const Second_SideBar = () => {
           </div>
           
 
-          {/* متنِ تقویم شخصی با لینک و فاصله مناسب */}
           <div className="flex flex-col items-center gap-y-3">
             
             <div className="flex flex-col gap-6 text-indigo-600">
@@ -61,7 +58,6 @@ const Second_SideBar = () => {
         </button>
       </div>
 
-      {/* ۲. ستونِ محتوا (تقویم و فیلترها - سمت چپ) */}
       <div className="flex-1 flex flex-col p-4 overflow-y-auto border-r border-gray-100">
         <div className="text-center text-sm font-bold text-slate-800 mb-4">
           {format(currentMonth, 'MMMM yyyy')}
@@ -122,7 +118,6 @@ const Second_SideBar = () => {
   );
 };
 
-// اصلاح کامپوننت FilterItem برای نمایش بصری "بولت" انتخاب تکی
 const FilterItem = ({ label, active, onClick }) => (
   <div className="flex items-center gap-3 cursor-pointer group" onClick={onClick}>
     <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center transition-all ${active ? 'border-indigo-600' : 'border-gray-300'}`}>
