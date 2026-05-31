@@ -15,6 +15,7 @@ import AddRequestModal from './Home/Components/AddRequestModal';
 import AddTaskComponent from './Home/Components/AddTaskComponent';
 import MyTasks from './MyTasks/MyTask';
 import TaskAssigned from './TaskAssigned/TaskAssigned';
+import MyCalendar from './MyCalendarPage/MyCalendarPage';
 const SidebarManager = ({ isSidebarOpen, setIsSidebarOpen }) => {
   const location = useLocation(); // دریافت مسیر فعلی
   const isHome = location.pathname === "/"; // بررسی اینکه آیا در صفحه خانه هستیم
@@ -77,7 +78,9 @@ function AppContent({ isSidebarOpen, setIsSidebarOpen }) {
             <Route path="/meetings" element={<MeetingPage/>} />
             <Route path="/meetingsList" element={<MeetingsList />} />
             <Route path="/mytasks" element={<MyTasks />} />
-              <Route path="/taskassigned" element={<TaskAssigned />} />
+            <Route path="/taskassigned" element={<TaskAssigned />} />
+            <Route path="/mycalendar" element={<MyCalendar />} />
+            
             
           
           </Routes>

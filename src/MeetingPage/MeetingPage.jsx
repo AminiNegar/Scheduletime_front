@@ -122,7 +122,7 @@ const MeetingPage = () => {
       </DragDropContext>
 
       {isModalOpen && (
-  <AddMeetingModal 
+  <AddMeetingModal
     isOpen={isModalOpen} 
     onClose={() => setIsModalOpen(false)} 
     onAdd={handleAddMeeting} 

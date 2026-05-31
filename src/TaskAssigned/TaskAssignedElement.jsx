@@ -1,9 +1,18 @@
 import React, { useState } from 'react';
-import ProfileModal from '.././Layout/Components/ProfileModal'
-import { FaEnvelope } from 'react-icons/fa';
-import { FaComment } from 'react-icons/fa';
+import ProfileModal from '.././Layout/Components/ProfileModal';
+
 const TaskAssignedElement = ({ title, description, status, assignedUser }) => {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
+
+  // ایجاد یک آبجکت ایمن برای جلوگیری از ارور undefined
+  const safeUser = assignedUser || {
+    name: 'کاربر ناشناس',
+    avatar: 'https://i.pravatar.cc',
+    role: '',
+    bio: '',
+    university: '',
+    faculty: ''
+  };
 
   return (
     <>
@@ -20,27 +29,28 @@ const TaskAssignedElement = ({ title, description, status, assignedUser }) => {
           </span>
         </td>
         <td className="p-4">
-          {/* تغییر از Link به یک div قابل کلیک */}
           <div 
             onClick={() => setIsProfileOpen(true)} 
             className="flex items-center gap-2 cursor-pointer group"
           >
-            <img src={assignedUser?.avatar} alt={assignedUser?.name} className="w-8 h-8 rounded-full border border-slate-200" />
+            <img src={safeUser.avatar} alt={safeUser.name} className="w-8 h-8 rounded-full border border-slate-200" />
             <div>
-              <div className="font-bold text-slate-800 group-hover:text-indigo-600 transition-colors">{assignedUser?.name}</div>
-              <div className="text-[10px] text-slate-400">{assignedUser?.role}</div>
+              <div className="font-bold text-slate-800 group-hover:text-indigo-600 transition-colors">{safeUser.name}</div>
+              <div className="text-[10px] text-slate-400">{safeUser.role}</div>
             </div>
           </div>
         </td>
       </tr>
 
-      {/* فراخوانی مودال برای این کاربر خاص */}
-      <ProfileModal 
-        user={assignedUser} 
-        isOpen={isProfileOpen} 
-        onClose={() => setIsProfileOpen(false)} 
-        canEdit={false} // در جدول معمولاً فقط مشاهده است
-      />
+      {/* فراخوانی مودال با داده‌های ایمن */}
+      {isProfileOpen && (
+        <ProfileModal 
+          user={safeUser} 
+          isOpen={isProfileOpen} 
+          onClose={() => setIsProfileOpen(false)} 
+          canEdit={false} 
+        />
+      )}
     </>
   );
 };

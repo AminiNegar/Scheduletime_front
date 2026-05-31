@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
 import AddRequestModal from './../Home/Components/AddRequestModal';
 import MytaskRow from './MytasRow';
+import AddTaskComponent from '../Home/Components/AddTaskComponent';
 
 const MyTasks = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -96,7 +97,7 @@ const MyTasks = () => {
         </div>
       </DragDropContext>
 
-      {isModalOpen && <AddRequestModal onClose={() => setIsModalOpen(false)} onAdd={handleAddTask} />}
+      {isModalOpen && <AddTaskComponent onClose={() => setIsModalOpen(false)} forcedAssignee='خودم' />}
     </div>
   );
 };
