@@ -2,6 +2,7 @@ import { FaPlus, FaCalendarDay, FaUniversity, FaGlobe, FaThLarge, FaCheckCircle,
 import React, { useState } from 'react';
 import DailyView from './Components/DailyView';
 import WeeklyView from './Components/WeeklyView';
+import MonthlyView from './Components/MonthlyView';
 import AddMeetingModal from '../Home/Components/AddMeetingModal';
 import AddRequestModal from '../Home/Components/AddRequestModal';
 import AddTaskComponent from '../Home/Components/AddTaskComponent';
@@ -87,6 +88,8 @@ const MyCalendar = () => {
             const count = meetings.filter(m => m.category === item.title).length;
             
             return (
+              
+              
               <div key={idx} className={`${item.color} h-28 p-5 rounded-3xl border border-white shadow-sm flex flex-col justify-between hover:rotate-2 transition-all cursor-pointer hover:shadow-[0_0_35px_rgba(15,23,42,0.35)] ring-2 ring-blue-500/50`}>
                 <div className="flex justify-between items-start">
                   <div className="text-xl">{item.icon}</div>
@@ -102,6 +105,7 @@ const MyCalendar = () => {
       <div className="w-full px-4">
         {view === 'روزانه' && <DailyView meetings={meetings} />}
         {view === 'هفتگی' && <WeeklyView meetings={meetings} />}
+        {view === 'ماهانه' && <MonthlyView meetings={meetings} />}
       </div>
     </div>
   );

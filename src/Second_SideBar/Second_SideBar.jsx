@@ -33,7 +33,7 @@ const Second_SideBar = () => {
                 <Link to="/" className="text-[10px] text-indigo-700 font-bold whitespace-nowrap text-center mt-2">
                <FaHome title='صفحه اصلی' size={20} />
             </Link>             
-              <Link to="/calendar" className="text-[10px] text-indigo-700 font-bold whitespace-nowrap text-center mt-2">
+              <Link to="/mycalendar" className="text-[10px] text-indigo-700 font-bold whitespace-nowrap text-center mt-2">
                <FaCalendarAlt title='تقویم شخصی' size={20} />
             </Link>
             <Link to="/meetings" className="text-[10px] text-indigo-700 font-bold whitespace-nowrap text-center mt-2">

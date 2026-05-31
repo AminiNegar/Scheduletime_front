@@ -72,7 +72,6 @@ function AppContent({ isSidebarOpen, setIsSidebarOpen }) {
         <div className="flex-1 h-full overflow-y-auto">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/calendar" element={<CalendarPage />} />
             <Route path="/requests" element={<RequestsPage />} />
             <Route path="/requestsList" element={<RequestsList />} />
             <Route path="/meetings" element={<MeetingPage/>} />
